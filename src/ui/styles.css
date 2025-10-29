@@ -1,0 +1,398 @@
+/* === Sutil Arte — Tema vibrante (claro + hero colorido) ================= */
+:root {
+  /* Superfícies */
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --line: #e6ecf4;
+  --shadow: 0 10px 28px rgba(17, 27, 44, 0.1);
+
+  /* Texto */
+  --text: #1d2330;
+  --muted: #5e6a79;
+
+  /* Marca */
+  --brand: #c5221f; /* vermelho */
+  --accent: #f26b1d; /* laranja */
+  --secondary: #aa2ee6; /* roxo */
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, Arial;
+}
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.content {
+  padding: 0;
+}
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 16px;
+}
+
+/* Topbar branco com faixa de cor */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  height: 30px;
+}
+.brand {
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  font-size: 1.2rem;
+  background: linear-gradient(
+    90deg,
+    var(--brand),
+    var(--accent),
+    var(--secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.menu a {
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+.menu a:hover,
+.menu a.active {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--brand), #fff 85%),
+    color-mix(in oklab, var(--accent), #fff 85%)
+  );
+  text-decoration: none;
+}
+
+/* ===== HERO “cartaz” super chamativo (vermelho->laranja + toque roxo) */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  align-items: center;
+  padding: 34px 24px;
+  border-radius: 20px;
+  overflow: hidden;
+  color: #fff;
+  border: 1px solid #00000010;
+  box-shadow: var(--shadow);
+  background: radial-gradient(
+      650px 280px at 90% 20%,
+      color-mix(in oklab, var(--secondary), #fff 70%),
+      transparent 60%
+    ),
+    linear-gradient(135deg, var(--brand), var(--accent));
+}
+.hero h1 {
+  font-size: clamp(30px, 4.4vw, 48px);
+  line-height: 1.06;
+  margin: 0 0 10px;
+}
+.hero p {
+  color: #fdebe8;
+  margin: 0 0 18px;
+  font-size: clamp(14px, 2.2vw, 18px);
+}
+.hero-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 2px solid #ffffff25;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+/* Botões */
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: none;
+  background: #fff;
+  color: #541616;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  box-shadow: 0 10px 18px rgba(197, 34, 31, 0.35);
+  transition: transform 0.12s, filter 0.12s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+.btn.ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #ffffffbb;
+  box-shadow: none;
+}
+
+/* Seções & títulos */
+.section-title {
+  font-size: clamp(22px, 2.6vw, 30px);
+  margin: 22px 0 12px;
+}
+
+/* Cards claros com acento colorido */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-img {
+    height: 320px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--brand),
+    var(--accent),
+    var(--secondary)
+  );
+}
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+.card .body {
+  padding: 14px;
+  display: grid;
+  gap: 6px;
+}
+.muted {
+  color: var(--muted);
+}
+
+/* Página de produto */
+.product {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+}
+.product-img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.product-info {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+@media (max-width: 980px) {
+  .product {
+    grid-template-columns: 1fr;
+  }
+  .product-img {
+    height: 320px;
+  }
+}
+
+/* Instagram e Mapa */
+.embed {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.map {
+  width: 100%;
+  height: 280px;
+  border: 0;
+  border-radius: 16px;
+  filter: grayscale(0.05) contrast(1.05);
+  box-shadow: var(--shadow);
+}
+
+/* Rodapé claro com faixa colorida */
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: 22px 16px;
+  color: var(--muted);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--brand),
+    var(--accent),
+    var(--secondary)
+  );
+}
+/* === SEÇÃO SOBRE === */
+.sobre {
+  display: grid;
+  gap: 28px;
+}
+
+.valores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 16px;
+}
+
+.valor {
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 22px;
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.valor:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+.valor span {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+.valor h3 {
+  color: var(--brand);
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+.valor p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .valores {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== PRODUTOS: filtros e cards compactos ===== */
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px;
+  margin: 8px 0 16px;
+}
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+.chip.active {
+  background: linear-gradient(
+    90deg,
+    var(--brand),
+    var(--accent),
+    var(--secondary)
+  );
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 20px rgba(197, 34, 31, 0.22);
+}
+.chip:hover {
+  filter: brightness(1.03);
+}
+
+/* Card sem imagem — reduz altura e mantém a faixa colorida */
+.card.no-img {
+  min-height: auto;
+}
+.card.no-img .body {
+  padding-top: 18px;
+}
+
+/* Estado vazio elegante */
+.empty {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
