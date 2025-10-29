@@ -3,6 +3,8 @@ import { GALLERIES } from '../../data'
 export default function Trabalhos() {
   return (
     <>
+
+    
       <h1>Trabalhos</h1>
       <div className="grid">
         {GALLERIES.map(g => (
